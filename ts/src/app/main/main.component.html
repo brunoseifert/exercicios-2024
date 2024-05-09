@@ -1,0 +1,156 @@
+<div class="flex flex-col p-4 space-y-4">
+  <app-main-video></app-main-video>
+
+  <div class="flex flex-col bg-bgText rounded-md">
+    <h1 class="text-xl font-bold items-center pl-4 py-4">Resumo</h1>
+    <div
+      [style.height.px]="isExpanded ? 320 : 130"
+      class="overflow-hidden transition-height duration-300 bg-white mx-1"
+    >
+      <div class="overflow-hidden space-y-4 p-4 text-sm">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+          vitae turpis auctor, mollis felis ut, commodo turpis. Phasellus felis
+          mauris, egestas eget cursus et, iaculis quis lacus. Fusce auctor eros
+          sed magna ultricies gravida. Etiam aliquam dictum nisl, vel aliquet
+          enim accumsan sit amet. Donec finibus nisi tellus, ut viverra lorem
+          vestibulum ut. Phasellus condimentum orci id leo condimentum lobortis
+          et non lorem. Sed id nisl metus. Quisque sollicitudin ligula in sapien
+          scelerisque, ac gravida eros vestibulum.
+        </p>
+        <p>
+          Fusce vitae luctus dui. Donec id euismod mauris, in volutpat urna.
+          Proin dapibus consequat feugiat. Proin dictum justo arcu, quis
+          vestibulum augue lacinia quis. Sed dignissim dui nulla, ut faucibus
+          mauris sodales id. Aliquam erat volutpat. Maecenas dolor enim,
+          tincidunt id elit non, suscipit interdum turpis. Etiam finibus urna
+          libero, eget interdum eros volutpat ullamcorper. Pellentesque et
+          pretium lorem. Aenean interdum quis diam ac porttitor. Cras nec ipsum
+          pulvinar, pharetra libero non, ornare enim. Etiam in laoreet odio.
+        </p>
+        <p>
+          Nam eget tristique elit, at fermentum tellus. Mauris scelerisque
+          ligula id eleifend feugiat. Donec eleifend vehicula sem nec dapibus.
+          Integer scelerisque neque dui, in lacinia erat molestie eu. Phasellus
+          maximus dui eget lacus porta tempor. Ut ex nibh, dignissim quis purus
+          semper, efficitur facilisis turpis. Praesent blandit elementum
+          ultricies. Aliquam sit amet enim sit amet nulla pulvinar lobortis
+          consectetur non odio. Phasellus at lacus hendrerit, vulputate nisi sit
+          amet, viverra mauris. Etiam eu scelerisque orci. Quisque sagittis, mi
+          vitae pharetra iaculis, orci elit eleifend massa, eu posuere mauris
+          odio id odio. Morbi eu libero luctus, consectetur lorem vel, interdum
+          sapien. Aenean in porta arcu. Maecenas eu maximus massa.
+        </p>
+        <p>
+          Praesent velit dolor, dignissim sed quam ac, efficitur porta justo.
+          Pellentesque porta pharetra felis ut hendrerit. Nulla facilisi.
+          Aliquam erat volutpat. Nunc sit amet faucibus quam. Maecenas dapibus
+          luctus dolor at viverra. Duis nec fringilla libero. Duis risus nibh,
+          viverra ac orci nec, iaculis dictum sem. Aliquam at malesuada arcu.
+          Aliquam erat volutpat. Donec varius ipsum purus, ut vehicula purus
+          placerat vitae. Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit.
+        </p>
+      </div>
+    </div>
+    <div
+      class="text-primary hover:text-orange-900 mb-1 mx-1 flex items-center justify-end px-2 bg-white cursor-pointer"
+    >
+      <a class="btn-show-more" (click)="toggleExpand()"> ver mais </a>
+    </div>
+  </div>
+
+  <div class="flex flex-col bg-bgText rounded-md">
+    <h1 class="text-xl font-bold items-center pl-4 py-4">Discussões</h1>
+    <div class="bg-white m-1">
+      <div
+        class="flex flex-col w-full items-center py-4 justify-center space-y-4"
+        *ngIf="!mostrarFormulario"
+      >
+        <p class="text-primary text-lg font-medium">
+          Compartilhe suas ideias ou dúvidas com os autores!
+        </p>
+        <div class="flex">
+          <img src="../../assets/icon1.png" alt="" width="50px" />
+          <img src="../../assets/icon2.png" alt="" width="50px" />
+          <img src="../../assets/icon3.png" alt="" width="50px" />
+        </div>
+        <p class="w-[600px] text-center text-sm font-light">
+          Sabia que o maior estímulo no desenvolvimento científico e cultural é
+          a curiosidade? Deixe seus questionamentos ou sugestões para o autor!
+        </p>
+      </div>
+
+      <div *ngIf="mostrarFormulario" class="bg-white p-4 rounded-md">
+        <h2 class="text-xs font-normal mb-4 text-center">
+          Tem uma dúvida ou sugestão? Compartilhe seu feedback com os autores!
+        </h2>
+        <form>
+          <div class="mb-4">
+            <label for="assunto" class="block text-sm font-medium text-primary"
+              >Assunto:</label
+            >
+            <div class="mt-1 p-2 border border-gray-300 rounded-md w-full">
+              <input
+                type="text"
+                id="assunto"
+                name="assunto"
+                class="subject"
+                placeholder="Defina um tópico sucinto para notificar os autores..."
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="conteudo" class="block text-sm font-medium text-primary"
+              >Conteúdo:</label
+            >
+            <textarea
+              id="conteudo"
+              name="conteudo"
+              rows="4"
+              class="mt-1 p-2 border border-gray-300 rounded-md w-full"
+            ></textarea>
+          </div>
+          <div
+            class="bg-primary text-white py-2 px-4 w-fit rounded-md shadow-md hover:bg-orange-700"
+          >
+            <button
+              class="btn-create-topic"
+              (click)="adicionarMensagem()"
+              type="button"
+            >
+              Enviar
+            </button>
+          </div>
+        </form>
+      </div>
+      <h3
+        *ngIf="mostrarMensagemFeedback"
+        class="bg-green-200 text-green-700 px-4 py-2 rounded-md m-4"
+      >
+        Aguardando feedback dos autores
+      </h3>
+      <div
+        class="relative border-b border-primary mx-2 border-opacity-25 justify-center flex items-center my-6"
+      >
+        <div
+          class="w-auto bg-primary absolute text-white items-center flex gap-2 justify-center px-4 py-1 rounded-md shadow-md cursor-pointer"
+        >
+          <a
+            *ngIf="mostrarBotaoCriarTopico"
+            (click)="toggleFormulario()"
+            class="btn-create-topic"
+          >
+            <div class="flex gap-2 px-2">
+              <img src="../../assets/buttonIcon.png" alt="" class="w-6" />
+              criar tópico
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <app-main-pergunta></app-main-pergunta>
+      <app-main-topic></app-main-topic>
+    </div>
+  </div>
+</div>
